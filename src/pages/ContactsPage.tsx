@@ -1,5 +1,9 @@
 
 import { useContacts } from "../hooks/useContacts"
+import { useCompanies } from "../hooks/useCompanies"
+
+import type { Company } from "../hooks/useCompanies"
+
 import ContactForm from "../components/ContactForm"
 
 import { Trash2, Mail, Phone } from 'lucide-react'
@@ -14,6 +18,7 @@ const statusColors = {
 
 export default function ContactsPage() {
     const { contacts, loading, addContact, deleteContact } = useContacts()
+    const { companies } = useCompanies()
 
     return (
         <div className="flex flex-col gap-10">
@@ -25,7 +30,7 @@ export default function ContactsPage() {
                 </p>
             </div>
 
-            <ContactForm onAdd={addContact} />
+            <ContactForm onAdd={addContact} companies={companies}/>
 
             {loading ? (
                 <p className=""> Chargement...</p>

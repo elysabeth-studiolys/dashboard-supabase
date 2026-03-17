@@ -1,17 +1,21 @@
 import { useState } from 'react'
 import type { Contact } from '../hooks/useContacts'
+import type { Company } from '../hooks/useCompanies'
 
 type Props = {
     onAdd: (contact: Omit<Contact, 'id' | 'created_at'>) => void
+    companies: Company[]
 }
-export default function ContactForm({ onAdd }: Props) {
+
+export default function ContactForm({ onAdd, companies }: Props) {
 
     const [form, setForm] = useState({
         first_name: '',
         last_name: '',
         email: '',
         phone: '',
-        status: 'prospect' as Contact['status']
+        status: 'prospect' as Contact['status'],
+        company_id: ''
     })
 
     function handleSubmit() {
@@ -21,7 +25,8 @@ export default function ContactForm({ onAdd }: Props) {
         setForm({
             first_name: '', last_name: '',
             email: '', phone: '',
-            status: 'prospect'
+            status: 'prospect',
+            company_id: '',
         })
     }
 
@@ -58,6 +63,17 @@ export default function ContactForm({ onAdd }: Props) {
                 <option value="prospect">Prospect</option>
                 <option value="client">Client</option>
                 <option value="inactif">Inactif</option>
+
+            </select>
+
+             <select className='input-form p-1'
+                value={form.company_id}
+                onChange={e => setForm({ ...form, company_id: e.target.value})}
+            >
+                <option value="">--</option>
+                {companies.map (c => (
+                    <option value={c.id}>{c.name}</option>
+                ))}
 
             </select>
 

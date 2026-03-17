@@ -1,6 +1,58 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bg: #F0F0F0;
+  --color-surface: #1a1d27;
+  --color-border: #2a2d3a;
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
+}
 body {
   background-color: #F0F0F0;
   color: #1E1E1E;
+  font-weight: 200;
+  @apply m-10
+}
+
+.input-form{
+  @apply border rounded-xl
+}
+
+h1{
+  font-size: 2rem;
+  font-weight: 700;
+}
+.badge {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+@layer components {
+
+  .badge-prospect {
+    background-color: rgb(59 130 246 / 0.2);
+    color: rgb(96 165 250);
+    border-radius: 9999px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+
+  }
+
+  .badge-client {
+    background-color: rgb(16 185 129 / 0.2);
+    color: rgb(52 211 153);
+    border-radius: 9999px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .badge-inactif {
+    background-color: rgb(100 116 139 / 0.2);
+    color: rgb(148 163 184);
+    border-radius: 9999px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
 }

@@ -11,6 +11,7 @@ export type Contact = {
     created_at: string
 
 }
+
 export function useContacts() {
     const [contacts, setContacts] = useState<Contact[]>([])
     const [loading, setLoading] = useState(true)
@@ -31,7 +32,7 @@ async function fetchContacts(){
 }
 
 useEffect(() => {
-    fetchContacts()
+  fetchContacts()
 }, [])
 
 //écrire dans lla base de donnée

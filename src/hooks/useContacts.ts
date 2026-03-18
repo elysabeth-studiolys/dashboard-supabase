@@ -9,6 +9,8 @@ export type Contact = {
     phone: string | null
     status: 'prospect' | 'client' | 'inactif'
     created_at: string
+    company_id: string
+    
 
 }
 

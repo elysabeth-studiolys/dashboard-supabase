@@ -15,7 +15,7 @@ body {
 }
 
 .input-form{
-  @apply border rounded-xl
+  @apply border rounded-md p-1
 }
 
 h1{

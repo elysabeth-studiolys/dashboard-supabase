@@ -2,6 +2,7 @@ import ContactsPage from './pages/ContactsPage'
 import { useEffect } from 'react'
 import { supabase } from './lib/supabase'
 import CompanyPage from './pages/CompanyPage'
+import DealsPage from './pages/DealsPage'
 
 export default function App() {
   useEffect(() => {
@@ -19,5 +20,7 @@ export default function App() {
 
   <ContactsPage />
   <CompanyPage />
+  <DealsPage />
+  
 </div>)
 }

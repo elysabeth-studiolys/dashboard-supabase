@@ -23,7 +23,7 @@ export function useDeals(){
         const { data, error } = await supabase
             .from('deals')
             .select('*')
-            .order('Created_at', {ascending: false})
+            .order('created_at', {ascending: false})
 
         if(error) console.error(error)
             else setDeals(data ?? [])
@@ -53,7 +53,7 @@ export function useDeals(){
             .eq('id', id)
 
         if (error) console.error(error)
-        else fetchDeals
+        else fetchDeals()
     }
 
     return { deals, loading, addDeal, deleteDeal }

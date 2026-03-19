@@ -45,7 +45,7 @@ export default function ContactsPage() {
 
 
                 {loading ? (
-                    <p className=""> Chargement...</p>
+                    <p > Chargement...</p>
                 ) : contacts.length === 0 ? (
                     <p>Aucun contact pour l'instant.</p>
                 ) : (

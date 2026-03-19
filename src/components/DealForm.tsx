@@ -22,14 +22,14 @@ export default function DealForm({ onAdd, companies, contacts }: Props) {
     })
 
     async function handleSubmit() {
-        if (!form.title || !form.value || !form.stage)
+        if (!form.title || !form.value || !form.stage) return
             onAdd(form)
 
         setForm({
             title: '',
             value: 0,
             stage: 'lead',
-            closed_at: '',
+            closed_at: null,
             contact_id: '',
             company_id: '',
         })

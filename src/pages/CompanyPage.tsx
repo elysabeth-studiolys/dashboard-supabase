@@ -1,8 +1,9 @@
-import { useCompanies } from "../hooks/useCompanies"
+import { useState } from 'react'
 
+import { useCompanies, type Company } from "../hooks/useCompanies"
 import CompanyForm from "../components/CompanyForm"
 
-import { Trash2, Factory, Globe } from 'lucide-react'
+import { Trash2, Factory, Globe, CirclePlus } from 'lucide-react'
 
 
 
@@ -10,14 +11,27 @@ export default function CompanyPage() {
 
     const { companies, loading, addCompany, deleteCompany } = useCompanies()
 
+    const [isOpen, setIsOpen] = useState(false)
+
+    function handleAddContact(company: Omit<Company, 'id' | 'created_at'>) {
+        addCompany(company)
+        setIsOpen(false)
+    }
+
+
     return (
-        <div className="flex flex-col gap-10">
+        <>
+        <section className="flex flex-col gap-10">
             <div >
+                <div className='flex justify-between'>
                 <h1>Entreprises</h1>
+                <button onClick={() => setIsOpen(true)}>
+                            <CirclePlus size={25} className="text-accent" />
+                        </button>
+                </div>
                 <p>{companies.length} entreprises enregistrées</p>
             </div>
 
-            <CompanyForm onAdd={addCompany} />
 
             {loading ? (
                 <p className=""> Chargement...</p>
@@ -54,7 +68,15 @@ export default function CompanyPage() {
                     ))}
                 </div>
             )}
-        </div>
+        </section>
+
+        {isOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/5">
+                <CompanyForm onAdd={handleAddContact}/>
+                
+            </div>
+        )}
+        </>
 
     )
 }

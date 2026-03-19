@@ -37,27 +37,38 @@ export default function DealForm({ onAdd, companies, contacts }: Props) {
 
 
     return (
-        <div>
+        <div className='flex flex-col w-1/2 rounded-xl shadow-xl p-3 bg-white gap-5 p-10'>
             <h1>Enregistrer une vente</h1>
-            <div>
+            <div className='flex flex-col gap-5'>
 
+                <div className='flex flex-col'>
+                    <span>Titre</span>
                 <input className='input-form'
                     value={form.title}
                     onChange={e => setForm({ ...form, title: e.target.value })}
                 />
+                </div>
 
+                <div className='flex flex-col'> 
+                    <span>Montant</span>
                 <input className='input-form'
                     type='number'
                     value={form.value}
                     onChange={e => setForm({ ...form, value: Number(e.target.value) })}
                 />
+                </div>
 
+                <div className='flex flex-col'>
+                    <span>Date de cloture</span>
                 <input className='input-form'
                     type='date'
                     value={form.closed_at ?? ''}
                     onChange={e => setForm({ ...form, closed_at: e.target.value || null })}
                 />
-
+                </div>
+                
+                <div className='flex flex-col'>
+                    <span>Statut</span>
                 <select className='input-form'
                     value={form.stage}
                     onChange={e => setForm({ ...form, stage: e.target.value as Deal['stage'] })}
@@ -69,6 +80,7 @@ export default function DealForm({ onAdd, companies, contacts }: Props) {
                     <option value="refusé">Refusé</option>
 
                 </select>
+                </div>
 
                 <div className='flex flex-col'>
                     <span>Entreprise</span>
